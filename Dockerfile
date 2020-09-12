@@ -41,7 +41,8 @@ EXPOSE 80 443
 
 ENV INDEX on
 
-RUN sed -i "s/XXXXX/autoindex $INDEX;/g" /etc/nginx/sites-available/default
+RUN sed -i "s/batman/autoindex $INDEX;/g" /etc/nginx/sites-available/default
+#RUN sed -i "s/batman/autoindex off;/g" /etc/nginx/sites-available/default
 
 CMD service nginx start ; \
 	service php7.3-fpm start ; \

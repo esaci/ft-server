@@ -18,11 +18,11 @@ server {
 	server_name localhost www.localhost;
 
 	location / {
-	XXXXX
+	batman
 	}
 
 	location ~ \.php$ {
 		include snippets/fastcgi-php.conf;
-		fastcgi_pass unix:/var/run/php/php7.0-fpm.sock;
+		fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
 	}
 }
