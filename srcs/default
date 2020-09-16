@@ -13,7 +13,7 @@ server {
 	ssl_certificate_key /etc/ssl/certs/localhost.key;
 
 	root /var/www/html;
-	index index.html index.htm index.nginx-debian.html index.php;
+	index index.html index.htm index.nginx-debian.html index.php index.sh;
 
 	server_name localhost www.localhost;
 
