@@ -21,7 +21,8 @@ RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-english.
 RUN tar xvf phpMyAdmin-5.0.2-english.tar.gz && rm -rf phpMyAdmin-5.0.2-english.tar.gz
 RUN mv phpMyAdmin-5.0.2-english phpmyadmin
 COPY ./srcs/config.inc.php phpmyadmin
-
+RUN mkdir tmp
+COPY /srcs/index.sh /tmp/index.sh
 WORKDIR /var/www/html/
 RUN rm -rf index*
 COPY ./srcs/index.html /var/www/html/index.html
@@ -39,12 +40,12 @@ COPY ./srcs/default /etc/nginx/sites-available/default
 
 EXPOSE 80 443
 
-ENV INDEX on
+#ENV INDEX on
 
-RUN sed -i "s/batman/autoindex $INDEX;/g" /etc/nginx/sites-available/default
+#RUN sed -i "s/batman/autoindex $INDEX;/g" /etc/nginx/sites-available/default
 #RUN sed -i "s/batman/autoindex off;/g" /etc/nginx/sites-available/default
 
-CMD service nginx start ; \
+CMD	bash /tmp/index.sh ; \
 	service php7.3-fpm start ; \
 	service mysql start ; \
 	sleep infinity & wait
