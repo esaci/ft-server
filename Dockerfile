@@ -2,13 +2,13 @@ FROM debian:buster
 
 RUN apt-get -y update && apt-get -y upgrade
 
-RUN	apt-get install -y apt-utils
-RUN	apt-get install -y nano
-RUN	apt-get install -y wget
-RUN	apt-get install -y nginx
-RUN	apt-get install -y mariadb-server mariadb-client
-RUN	apt-get install -y php-fpm php-mysql php-cli
-RUN	apt-get install -y php-mbstring php-zip php-gd
+RUN apt-get install -y apt-utils
+RUN apt-get install -y nano
+RUN apt-get install -y wget
+RUN apt-get install -y nginx
+RUN apt-get install -y mariadb-server mariadb-client
+RUN apt-get install -y php-fpm php-mysql php-cli
+RUN apt-get install -y php-mbstring php-zip php-gd
 
 
 COPY ./srcs/mysql_setup.sql /var/
